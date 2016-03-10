@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 public class Overlay {
     public int mBackgroundColor;
     public boolean mDisableClick;
-    public boolean mDisableClickThroughHole;
+    public boolean mDisableClickThroughHole = true; // by default, not allowed to click on target view
     public Style mStyle;
     public Animation mEnterAnimation, mExitAnimation;
     public View.OnClickListener mOnClickListener;

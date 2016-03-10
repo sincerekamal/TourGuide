@@ -283,7 +283,7 @@ public class TourGuide {
             TextView toolTipDescriptionTV = (TextView) mToolTipViewGroup.findViewById(R.id.description);
 
             /* set tooltip attributes */
-            toolTipContainer.setBackgroundColor(mToolTip.mBackgroundColor);
+            // toolTipContainer.setBackgroundColor(mToolTip.mBackgroundColor);
             if (mToolTip.mTitle == null || mToolTip.mTitle.trim().isEmpty()){
                 toolTipTitleTV.setVisibility(View.GONE);
             } else {
@@ -295,6 +295,13 @@ public class TourGuide {
                 toolTipDescriptionTV.setText(mToolTip.mDescription);
             }
 
+
+            mToolTipViewGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFrameLayout.performClick();
+                }
+            });
 
             mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
 
@@ -366,7 +373,7 @@ public class TourGuide {
                     int fixedY;
                     int toolTipHeightAfterLayouted = mToolTipViewGroup.getHeight();
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
-                    layoutParams.setMargins((int)mToolTipViewGroup.getX(),fixedY,0,0);
+                    layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, 0);
                 }
             });
 

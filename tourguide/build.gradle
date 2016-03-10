@@ -19,7 +19,7 @@ android {
     buildToolsVersion "21.1.2"
     def gradleProps = getGradleProperties()
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 17
         targetSdkVersion 21
         versionCode gradleProps['VERSION_CODE'].toInteger()
         versionName gradleProps['VERSION_NAME']
@@ -35,9 +35,16 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+
+    compile 'com.github.vajro:MaterialDesignLibrary:1.6'
+
     compile 'net.i2p.android.ext:floatingactionbutton:1.9.0'
 }
 

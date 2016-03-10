@@ -257,25 +257,7 @@ public class FrameLayoutWithHole extends FrameLayout {
 //                        return super.dispatchTouchEvent(ev);
 //                }
 //                return mViewHole.onTouchEvent(ev);
-
-                switch (action) {
-                    case MotionEvent.ACTION_UP:
-                        // act only on releasing the touch(which is click)
-                        if (mOverlay != null) {
-                            if (mOverlay.mDisableClickThroughHole) {
-                                // perform self click on overlay, instead of click on view
-                                return this.performClick();
-                            } else {
-                                return mViewHole.performClick() || this.performClick();
-                            }
-                        } else {
-                            return mViewHole.performClick();
-                        }
-                    case (MotionEvent.ACTION_DOWN):
-                        // returning true, to capture the following ACTION_UP, in case on click
-                        return true;
-                }
-                return false;
+                return true;
             }
         }
         return super.dispatchTouchEvent(ev);
