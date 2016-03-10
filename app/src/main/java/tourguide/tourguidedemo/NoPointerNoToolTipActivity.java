@@ -1,6 +1,7 @@
 package tourguide.tourguidedemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -11,34 +12,31 @@ import tourguide.tourguide.TourGuide;
 
 
 public class NoPointerNoToolTipActivity extends ActionBarActivity {
-    public TourGuide mTourGuideHandler;
+    public TourGuide mTutorialHandler;
     public Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /* Get parameters from main activity */
+        Intent intent = getIntent();
+
         super.onCreate(savedInstanceState);
         mActivity = this;
         setContentView(R.layout.activity_basic);
 
-        final Button button1 = (Button) findViewById(R.id.button1);
-        final Button button2 = (Button) findViewById(R.id.button2);
+        Button button = (Button)findViewById(R.id.button);
+
         // the return handler is used to manipulate the cleanup of all the tutorial elements
-        mTourGuideHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
+        mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
                 .setPointer(null) // set pointer to null
                 .setToolTip(null)
                 .setOverlay(new Overlay())
-                .playOn(button1);
+                .playOn(button);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                mTourGuideHandler.cleanUp();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mTourGuideHandler.playOn(button1);
+                mTutorialHandler.cleanUp();
             }
         });
     }

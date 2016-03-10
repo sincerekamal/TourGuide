@@ -12,7 +12,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 
-import tourguide.tourguide.ChainTourGuide;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Sequence;
 import tourguide.tourguide.ToolTip;
@@ -25,7 +24,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
     private Button mButton1, mButton2, mButton3;
     private Animation mEnterAnimation, mExitAnimation;
 
-    public ChainTourGuide mOverlayTG1, mOverlayTG2, mOverlayTG3;
+    public TourGuide mOverlayTG1, mOverlayTG2, mOverlayTG3;
     public Overlay mDefaultOverlay;
 
     public static final String TEST_EXCEPTION = "TEST_EXCEPTION";
@@ -67,7 +66,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
                               .setEnterAnimation(mEnterAnimation)
                               .setExitAnimation(mExitAnimation);
         // the return handler is used to manipulate the cleanup of all the tutorial elements
-        mOverlayTG1 = ChainTourGuide.init(this)
+        mOverlayTG1 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
                                                .setTitle(TEST_TITLE1)
                                                .setDescription("1")
@@ -76,7 +75,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
                                // note that there is not Overlay here, so the default one will be used
                                .playLater(mButton1);
         Log.d("ddw","mOverlayTG1.getOverlay(): "+mOverlayTG1.getOverlay());
-        mOverlayTG2 = ChainTourGuide.init(this)
+        mOverlayTG2 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
                                 .setTitle(TEST_TITLE2)
                                 .setDescription("2")
@@ -90,7 +89,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
                            )
                 .playLater(mButton2);
 
-        mOverlayTG3 = ChainTourGuide.init(this)
+        mOverlayTG3 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
                                                .setTitle(TEST_TITLE3)
                                                .setDescription("3")
@@ -113,6 +112,6 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
                                 .setContinueMethod(Sequence.ContinueMethod.Overlay)
                                 .build();
 
-        mSequenceManagerTG = ChainTourGuide.init(this).playInSequence(sequence);
+        mSequenceManagerTG = TourGuide.init(this).playInSequence(sequence);
     }
 }

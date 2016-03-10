@@ -34,8 +34,8 @@ public class TourGuideDemoMain extends ActionBarActivity {
         public Object getItem(int arg0) { return null;}
         public long getItemId(int position) { return position; }
         public int getCount() {
-            return 18;
-//            return 19;
+            return 17;
+//            return 17;
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {
@@ -213,8 +213,11 @@ public class TourGuideDemoMain extends ActionBarActivity {
                     }
                 });
             } else if (position == 16) {
-                // setup row
+                final Dialog dialog = new Dialog(mActivity);
+                dialog.setContentView(R.layout.sequence_dialog);
+                TextView overlay = (TextView)dialog.findViewById(R.id.overlay);
                 text.setText("Overlay Tour (with Sequence class)");
+
                 infoIcon.setVisibility(View.VISIBLE);
                 infoIcon.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -224,13 +227,6 @@ public class TourGuideDemoMain extends ActionBarActivity {
                         builder.create().show();
                     }
                 });
-
-                // setup dialog
-                final Dialog dialog = new Dialog(mActivity, R.style.Base_Theme_AppCompat_Dialog);
-                dialog.setContentView(R.layout.sequence_dialog);
-                dialog.setTitle(null);
-                TextView overlay = (TextView)dialog.findViewById(R.id.overlay);
-                TextView overlayListener = (TextView)dialog.findViewById(R.id.overlay_listener);
                 overlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -239,6 +235,7 @@ public class TourGuideDemoMain extends ActionBarActivity {
                         startActivity(mIntent);
                     }
                 });
+                TextView overlayListener = (TextView)dialog.findViewById(R.id.overlay_listener);
                 overlayListener.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -251,15 +248,6 @@ public class TourGuideDemoMain extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.show();
-                    }
-                });
-            } else if (position == 17){
-                text.setText("Navigational Drawer");
-                row.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mIntent = new Intent(mActivity, NavDrawerActivity.class);
-                        startActivity(mIntent);
                     }
                 });
             }
