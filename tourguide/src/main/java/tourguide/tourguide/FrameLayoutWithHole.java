@@ -258,6 +258,23 @@ public class FrameLayoutWithHole extends FrameLayout {
 //                }
 //                return mViewHole.onTouchEvent(ev);
 
+                switch (action) {
+                    case MotionEvent.ACTION_UP:
+                        // act only on releasing the touch(which is click)
+                        if (mOverlay != null) {
+                            if (mOverlay.mDisableClickThroughHole) {
+                                // perform self click on overlay, instead of click on view
+                                return this.performClick();
+                            } else {
+                                return mViewHole.performClick() || this.performClick();
+                            }
+                        } else {
+                            return mViewHole.performClick();
+                        }
+                    case (MotionEvent.ACTION_DOWN):
+                        // returning true, to capture the following ACTION_UP, in case on click
+                        return true;
+                }
                 return false;
             }
         }
@@ -268,7 +285,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         super.onDraw(canvas);
         mEraserBitmap.eraseColor(Color.TRANSPARENT);
 
-        if (mOverlay!=null) {
+        if (mOverlay != null) {
             mEraserCanvas.drawColor(mOverlay.mBackgroundColor);
             int padding = (int) (10 * mDensity);
             if (mOverlay.mStyle == Overlay.Style.Rectangle) {
@@ -280,6 +297,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         canvas.drawBitmap(mEraserBitmap, 0, 0, null);
 
     }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();

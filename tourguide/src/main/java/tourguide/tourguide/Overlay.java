@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 public class Overlay {
     public int mBackgroundColor;
     public boolean mDisableClick;
+    public boolean mDisableClickThroughHole;
     public Style mStyle;
     public Animation mEnterAnimation, mExitAnimation;
     public View.OnClickListener mOnClickListener;
@@ -44,6 +45,18 @@ public class Overlay {
      */
     public Overlay disableClick(boolean yes_no){
         mDisableClick = yes_no;
+        return this;
+    }
+
+    /**
+     * Disables clicking the through hole, so click events will not be sent to Target view
+     * @param yes_no whether to disable or enable click through hole
+     * if true, no click events will be sent to target view and Overlay's click listener will be fired
+     * if false, click event will be sent to view listener
+     * @return returns Overlay instance for chaining purpose
+     */
+    public Overlay disableClickThroughHole(boolean yes_no) {
+        mDisableClickThroughHole = yes_no;
         return this;
     }
 

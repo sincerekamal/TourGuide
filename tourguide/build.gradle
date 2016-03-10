@@ -20,7 +20,7 @@ android {
     def gradleProps = getGradleProperties()
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 22
+        targetSdkVersion 21
         versionCode gradleProps['VERSION_CODE'].toInteger()
         versionName gradleProps['VERSION_NAME']
     }
