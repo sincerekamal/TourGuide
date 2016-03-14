@@ -146,6 +146,7 @@
  <color name="Abit_Black">#66000000</color>
  <color name="Black">#000000</color>
  <color name="appOrange">#FFF17B21</color>
+<color name="appGrey">#FF4D4D4D</color>
     <integer-array name="colors">
         <item>@color/holo_blue_dark</item>
         <item>@color/holo_yellow_dark</item>

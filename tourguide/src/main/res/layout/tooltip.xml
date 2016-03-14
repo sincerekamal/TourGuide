@@ -15,27 +15,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@color/White"
-        android:gravity="center"
         android:padding="10dp">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="Default Title"
-            android:textColor="@color/Black"
+            android:textColor="@color/appGrey"
+            android:visibility="gone"
             android:textSize="20sp" />
 
         <TextView
+            android:layout_weight="0.5"
             android:id="@+id/description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Default Description"
-            android:textColor="@color/Black" />
+            android:singleLine="false"
+            android:text="Default Description asfdjklhk asfdkljklj afjhlkajldfhjl af asdfjhk asfjlk ajklsfdjhlk asfhjkl ahjkls ajhkfasljkhf jlasf ahjkl afsd"
+            android:textColor="@color/appGrey"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:background="@color/appGrey"
+            />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/proceedBtn"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="OK"
+            >OK</com.gc.materialdesign.views.ButtonFlat>
     </LinearLayout>
 
 </LinearLayout>

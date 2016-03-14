@@ -281,6 +281,15 @@ public class TourGuide {
             View toolTipContainer = mToolTipViewGroup.findViewById(R.id.toolTip_container);
             TextView toolTipTitleTV = (TextView) mToolTipViewGroup.findViewById(R.id.title);
             TextView toolTipDescriptionTV = (TextView) mToolTipViewGroup.findViewById(R.id.description);
+            View nextBtn = (View) mToolTipViewGroup.findViewById(R.id.proceedBtn);
+
+            nextBtn.setBackgroundColor(mActivity.getResources().getColor(R.color.appOrange));
+            nextBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFrameLayout.performClick();
+                }
+            });
 
             /* set tooltip attributes */
             // toolTipContainer.setBackgroundColor(mToolTip.mBackgroundColor);
@@ -384,15 +393,16 @@ public class TourGuide {
     }
 
     private int getXForTooTip(int gravity, int toolTipMeasuredWidth, int targetViewX, float adjustment){
-        int x;
-        if ((gravity & Gravity.LEFT) == Gravity.LEFT){
-            x = targetViewX - toolTipMeasuredWidth + (int)adjustment;
-        } else if ((gravity & Gravity.RIGHT) == Gravity.RIGHT) {
-            x = targetViewX + mHighlightedView.getWidth() - (int)adjustment;
-        } else {
-            x = targetViewX + mHighlightedView.getWidth() / 2 - toolTipMeasuredWidth / 2;
-        }
-        return x;
+        return 160; // returning constant for work around;
+//        int x;
+//        if ((gravity & Gravity.LEFT) == Gravity.LEFT){
+//            x = targetViewX - toolTipMeasuredWidth + (int)adjustment;
+//        } else if ((gravity & Gravity.RIGHT) == Gravity.RIGHT) {
+//            x = targetViewX + mHighlightedView.getWidth() - (int)adjustment;
+//        } else {
+//            x = targetViewX + mHighlightedView.getWidth() / 2 - toolTipMeasuredWidth / 2;
+//        }
+//        return x;
     }
     private int getYForTooTip(int gravity, int toolTipMeasuredHeight, int targetViewY, float adjustment){
         int y;
